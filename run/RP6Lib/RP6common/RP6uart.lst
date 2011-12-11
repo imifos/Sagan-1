@@ -1,0 +1,538 @@
+   1               		.file	"RP6uart.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	writeChar
+  18               	writeChar:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LVL0:
+  24               	.L2:
+  25               	.LM2:
+  26 0000 5D9B      		sbis 43-32,5
+  27 0002 00C0      		rjmp .L2
+  28               	.LM3:
+  29 0004 8CB9      		out 44-32,r24
+  30               	/* epilogue start */
+  31               	.LM4:
+  32 0006 0895      		ret
+  33               	.LFE2:
+  35               	.global	writeString
+  37               	writeString:
+  38               	.LFB3:
+  39               	.LM5:
+  40               	.LVL1:
+  41               	/* prologue: function */
+  42               	/* frame size = 0 */
+  43 0008 FC01      		movw r30,r24
+  44 000a 00C0      		rjmp .L6
+  45               	.LVL2:
+  46               	.L9:
+  47               	.LBB11:
+  48               	.LBB12:
+  49               	.LM6:
+  50 000c 5D9B      		sbis 43-32,5
+  51 000e 00C0      		rjmp .L9
+  52               	.LBE12:
+  53               	.LBE11:
+  54               	.LM7:
+  55 0010 3196      		adiw r30,1
+  56               	.LBB14:
+  57               	.LBB13:
+  58               	.LM8:
+  59 0012 8CB9      		out 44-32,r24
+  60               	.LVL3:
+  61               	.L6:
+  62               	.LBE13:
+  63               	.LBE14:
+  64               	.LM9:
+  65 0014 8081      		ld r24,Z
+  66 0016 8823      		tst r24
+  67 0018 01F4      		brne .L9
+  68               	/* epilogue start */
+  69               	.LM10:
+  70 001a 0895      		ret
+  71               	.LFE3:
+  73               	.global	writeNStringP
+  75               	writeNStringP:
+  76               	.LFB4:
+  77               	.LM11:
+  78               	.LVL4:
+  79               	/* prologue: function */
+  80               	/* frame size = 0 */
+  81 001c 00C0      		rjmp .L12
+  82               	.LVL5:
+  83               	.L15:
+  84               	.LBB15:
+  85               	.LBB16:
+  86               	.LM12:
+  87 001e 5D9B      		sbis 43-32,5
+  88 0020 00C0      		rjmp .L15
+  89               	.LM13:
+  90 0022 2CB9      		out 44-32,r18
+  91               	.L12:
+  92 0024 FC01      		movw r30,r24
+  93               	.LBE16:
+  94               	.LBE15:
+  95               	.LBB17:
+  96               	.LM14:
+  97 0026 0196      		adiw r24,1
+  98               	/* #APP */
+  99               	 ;  120 "../RP6Lib/RP6common/RP6uart.c" 1
+ 100 0028 2491      		lpm r18, Z
+ 101               		
+ 102               	 ;  0 "" 2
+ 103               	/* #NOAPP */
+ 104               	.LBE17:
+ 105 002a 2223      		tst r18
+ 106 002c 01F4      		brne .L15
+ 107               	/* epilogue start */
+ 108               	.LM15:
+ 109 002e 0895      		ret
+ 110               	.LFE4:
+ 112               	.global	writeStringLength
+ 114               	writeStringLength:
+ 115               	.LFB5:
+ 116               	.LM16:
+ 117               	.LVL6:
+ 118               	/* prologue: function */
+ 119               	/* frame size = 0 */
+ 120               	.LM17:
+ 121 0030 FC01      		movw r30,r24
+ 122 0032 E40F      		add r30,r20
+ 123 0034 F11D      		adc r31,__zero_reg__
+ 124               	.LVL7:
+ 125 0036 00C0      		rjmp .L18
+ 126               	.L22:
+ 127               	.LBB18:
+ 128               	.LBB19:
+ 129               	.LM18:
+ 130 0038 5D9B      		sbis 43-32,5
+ 131 003a 00C0      		rjmp .L22
+ 132               	.LBE19:
+ 133               	.LBE18:
+ 134               	.LM19:
+ 135 003c 3196      		adiw r30,1
+ 136               	.LBB21:
+ 137               	.LBB20:
+ 138               	.LM20:
+ 139 003e 8CB9      		out 44-32,r24
+ 140               	.LBE20:
+ 141               	.LBE21:
+ 142               	.LM21:
+ 143 0040 6150      		subi r22,lo8(-(-1))
+ 144               	.LVL8:
+ 145               	.L18:
+ 146 0042 8081      		ld r24,Z
+ 147 0044 8823      		tst r24
+ 148 0046 01F0      		breq .L21
+ 149 0048 6623      		tst r22
+ 150 004a 01F4      		brne .L22
+ 151               	.L21:
+ 152 004c 0895      		ret
+ 153               	.LFE5:
+ 155               	.global	__vector_13
+ 157               	__vector_13:
+ 158               	.LFB8:
+ 159               	.LM22:
+ 160 004e 1F92      		push __zero_reg__
+ 161 0050 0F92      		push r0
+ 162 0052 0FB6      		in r0,__SREG__
+ 163 0054 0F92      		push r0
+ 164 0056 1124      		clr __zero_reg__
+ 165 0058 2F93      		push r18
+ 166 005a 8F93      		push r24
+ 167 005c 9F93      		push r25
+ 168 005e EF93      		push r30
+ 169 0060 FF93      		push r31
+ 170               	/* prologue: Signal */
+ 171               	/* frame size = 0 */
+ 172               	.LM23:
+ 173 0062 2091 0000 		lds r18,write_size
+ 174 0066 8091 0000 		lds r24,read_size
+ 175 006a 922F      		mov r25,r18
+ 176 006c 981B      		sub r25,r24
+ 177 006e 9032      		cpi r25,lo8(32)
+ 178 0070 00F4      		brsh .L25
+ 179               	.LM24:
+ 180 0072 8091 0000 		lds r24,write_pos
+ 181 0076 E82F      		mov r30,r24
+ 182 0078 F0E0      		ldi r31,lo8(0)
+ 183 007a 9CB1      		in r25,44-32
+ 184 007c E050      		subi r30,lo8(-(uart_receive_buffer))
+ 185 007e F040      		sbci r31,hi8(-(uart_receive_buffer))
+ 186 0080 9083      		st Z,r25
+ 187 0082 8F5F      		subi r24,lo8(-(1))
+ 188 0084 8093 0000 		sts write_pos,r24
+ 189               	.LM25:
+ 190 0088 2F5F      		subi r18,lo8(-(1))
+ 191 008a 2093 0000 		sts write_size,r18
+ 192               	.LM26:
+ 193 008e 8132      		cpi r24,lo8(33)
+ 194 0090 00F0      		brlo .L26
+ 195               	.LM27:
+ 196 0092 1092 0000 		sts write_pos,__zero_reg__
+ 197               	.L26:
+ 198               	.LM28:
+ 199 0096 1092 0000 		sts uart_status,__zero_reg__
+ 200 009a 00C0      		rjmp .L28
+ 201               	.L25:
+ 202               	.LM29:
+ 203 009c 8CB1      		in r24,44-32
+ 204 009e 8093 0000 		sts dummy.1655,r24
+ 205               	.LM30:
+ 206 00a2 81E0      		ldi r24,lo8(1)
+ 207 00a4 8093 0000 		sts uart_status,r24
+ 208               	.L28:
+ 209               	/* epilogue start */
+ 210               	.LM31:
+ 211 00a8 FF91      		pop r31
+ 212 00aa EF91      		pop r30
+ 213 00ac 9F91      		pop r25
+ 214 00ae 8F91      		pop r24
+ 215 00b0 2F91      		pop r18
+ 216 00b2 0F90      		pop r0
+ 217 00b4 0FBE      		out __SREG__,r0
+ 218 00b6 0F90      		pop r0
+ 219 00b8 1F90      		pop __zero_reg__
+ 220 00ba 1895      		reti
+ 221               	.LFE8:
+ 223               	.global	readChar
+ 225               	readChar:
+ 226               	.LFB9:
+ 227               	.LM32:
+ 228               	/* prologue: function */
+ 229               	/* frame size = 0 */
+ 230               	.LM33:
+ 231 00bc 1092 0000 		sts uart_status,__zero_reg__
+ 232               	.LM34:
+ 233 00c0 9091 0000 		lds r25,read_size
+ 234 00c4 8091 0000 		lds r24,write_size
+ 235 00c8 8917      		cp r24,r25
+ 236 00ca 01F4      		brne .L30
+ 237 00cc E0E0      		ldi r30,lo8(0)
+ 238 00ce 00C0      		rjmp .L31
+ 239               	.L30:
+ 240               	.LM35:
+ 241 00d0 9F5F      		subi r25,lo8(-(1))
+ 242 00d2 9093 0000 		sts read_size,r25
+ 243               	.LM36:
+ 244 00d6 8091 0000 		lds r24,read_pos
+ 245 00da 8132      		cpi r24,lo8(33)
+ 246 00dc 00F0      		brlo .L32
+ 247               	.LM37:
+ 248 00de 1092 0000 		sts read_pos,__zero_reg__
+ 249               	.L32:
+ 250               	.LM38:
+ 251 00e2 8091 0000 		lds r24,read_pos
+ 252 00e6 E82F      		mov r30,r24
+ 253 00e8 F0E0      		ldi r31,lo8(0)
+ 254 00ea E050      		subi r30,lo8(-(uart_receive_buffer))
+ 255 00ec F040      		sbci r31,hi8(-(uart_receive_buffer))
+ 256 00ee E081      		ld r30,Z
+ 257 00f0 8F5F      		subi r24,lo8(-(1))
+ 258 00f2 8093 0000 		sts read_pos,r24
+ 259               	.L31:
+ 260               	.LM39:
+ 261 00f6 8E2F      		mov r24,r30
+ 262               	/* epilogue start */
+ 263 00f8 0895      		ret
+ 264               	.LFE9:
+ 266               	.global	readChars
+ 268               	readChars:
+ 269               	.LFB10:
+ 270               	.LM40:
+ 271               	.LVL9:
+ 272               	/* prologue: function */
+ 273               	/* frame size = 0 */
+ 274 00fa AC01      		movw r20,r24
+ 275               	.LM41:
+ 276 00fc 1092 0000 		sts uart_status,__zero_reg__
+ 277 0100 20E0      		ldi r18,lo8(0)
+ 278               	.LVL10:
+ 279 0102 00C0      		rjmp .L35
+ 280               	.LVL11:
+ 281               	.L37:
+ 282               	.LM42:
+ 283 0104 9F5F      		subi r25,lo8(-(1))
+ 284 0106 9093 0000 		sts read_size,r25
+ 285               	.LM43:
+ 286 010a 8091 0000 		lds r24,read_pos
+ 287 010e E82F      		mov r30,r24
+ 288 0110 F0E0      		ldi r31,lo8(0)
+ 289 0112 E050      		subi r30,lo8(-(uart_receive_buffer))
+ 290 0114 F040      		sbci r31,hi8(-(uart_receive_buffer))
+ 291 0116 9081      		ld r25,Z
+ 292 0118 FA01      		movw r30,r20
+ 293 011a E20F      		add r30,r18
+ 294 011c F11D      		adc r31,__zero_reg__
+ 295 011e 9083      		st Z,r25
+ 296 0120 8F5F      		subi r24,lo8(-(1))
+ 297 0122 8093 0000 		sts read_pos,r24
+ 298               	.LM44:
+ 299 0126 8132      		cpi r24,lo8(33)
+ 300 0128 00F0      		brlo .L36
+ 301               	.LM45:
+ 302 012a 1092 0000 		sts read_pos,__zero_reg__
+ 303               	.L36:
+ 304               	.LM46:
+ 305 012e 2F5F      		subi r18,lo8(-(1))
+ 306               	.LVL12:
+ 307               	.L35:
+ 308               	.LM47:
+ 309 0130 9091 0000 		lds r25,read_size
+ 310 0134 8091 0000 		lds r24,write_size
+ 311 0138 891B      		sub r24,r25
+ 312 013a 8617      		cp r24,r22
+ 313 013c 00F4      		brsh .L37
+ 314               	.LM48:
+ 315 013e 822F      		mov r24,r18
+ 316               	/* epilogue start */
+ 317 0140 0895      		ret
+ 318               	.LFE10:
+ 320               	.global	getBufferLength
+ 322               	getBufferLength:
+ 323               	.LFB11:
+ 324               	.LM49:
+ 325               	/* prologue: function */
+ 326               	/* frame size = 0 */
+ 327               	.LM50:
+ 328 0142 8091 0000 		lds r24,write_size
+ 329 0146 9091 0000 		lds r25,read_size
+ 330               	.LM51:
+ 331 014a 891B      		sub r24,r25
+ 332               	/* epilogue start */
+ 333 014c 0895      		ret
+ 334               	.LFE11:
+ 336               	.global	clearReceptionBuffer
+ 338               	clearReceptionBuffer:
+ 339               	.LFB12:
+ 340               	.LM52:
+ 341               	/* prologue: function */
+ 342               	/* frame size = 0 */
+ 343               	.LM53:
+ 344 014e 5798      		cbi 42-32,7
+ 345               	.LM54:
+ 346 0150 8CB1      		in r24,44-32
+ 347 0152 8093 0000 		sts dummy.1704,r24
+ 348               	.LM55:
+ 349 0156 1092 0000 		sts read_pos,__zero_reg__
+ 350               	.LM56:
+ 351 015a 1092 0000 		sts write_pos,__zero_reg__
+ 352               	.LM57:
+ 353 015e 1092 0000 		sts read_size,__zero_reg__
+ 354               	.LM58:
+ 355 0162 1092 0000 		sts write_size,__zero_reg__
+ 356               	.LM59:
+ 357 0166 1092 0000 		sts uart_status,__zero_reg__
+ 358               	.LM60:
+ 359 016a 579A      		sbi 42-32,7
+ 360               	/* epilogue start */
+ 361               	.LM61:
+ 362 016c 0895      		ret
+ 363               	.LFE12:
+ 365               	.global	writeInteger
+ 367               	writeInteger:
+ 368               	.LFB6:
+ 369               	.LM62:
+ 370               	.LVL13:
+ 371 016e 0F93      		push r16
+ 372 0170 1F93      		push r17
+ 373 0172 DF93      		push r29
+ 374 0174 CF93      		push r28
+ 375 0176 CDB7      		in r28,__SP_L__
+ 376 0178 DEB7      		in r29,__SP_H__
+ 377 017a 6197      		sbiw r28,17
+ 378 017c 0FB6      		in __tmp_reg__,__SREG__
+ 379 017e F894      		cli
+ 380 0180 DEBF      		out __SP_H__,r29
+ 381 0182 0FBE      		out __SREG__,__tmp_reg__
+ 382 0184 CDBF      		out __SP_L__,r28
+ 383               	/* prologue: function */
+ 384               	/* frame size = 17 */
+ 385 0186 462F      		mov r20,r22
+ 386               	.LM63:
+ 387 0188 8E01      		movw r16,r28
+ 388 018a 0F5F      		subi r16,lo8(-(1))
+ 389 018c 1F4F      		sbci r17,hi8(-(1))
+ 390 018e B801      		movw r22,r16
+ 391               	.LVL14:
+ 392 0190 50E0      		ldi r21,lo8(0)
+ 393 0192 0E94 0000 		call itoa
+ 394               	.LVL15:
+ 395               	.LM64:
+ 396 0196 C801      		movw r24,r16
+ 397 0198 0E94 0000 		call writeString
+ 398               	/* epilogue start */
+ 399               	.LM65:
+ 400 019c 6196      		adiw r28,17
+ 401 019e 0FB6      		in __tmp_reg__,__SREG__
+ 402 01a0 F894      		cli
+ 403 01a2 DEBF      		out __SP_H__,r29
+ 404 01a4 0FBE      		out __SREG__,__tmp_reg__
+ 405 01a6 CDBF      		out __SP_L__,r28
+ 406 01a8 CF91      		pop r28
+ 407 01aa DF91      		pop r29
+ 408 01ac 1F91      		pop r17
+ 409 01ae 0F91      		pop r16
+ 410 01b0 0895      		ret
+ 411               	.LFE6:
+ 413               	.global	writeIntegerLength
+ 415               	writeIntegerLength:
+ 416               	.LFB7:
+ 417               	.LM66:
+ 418               	.LVL16:
+ 419 01b2 FF92      		push r15
+ 420 01b4 0F93      		push r16
+ 421 01b6 1F93      		push r17
+ 422 01b8 DF93      		push r29
+ 423 01ba CF93      		push r28
+ 424 01bc CDB7      		in r28,__SP_L__
+ 425 01be DEB7      		in r29,__SP_H__
+ 426 01c0 6197      		sbiw r28,17
+ 427 01c2 0FB6      		in __tmp_reg__,__SREG__
+ 428 01c4 F894      		cli
+ 429 01c6 DEBF      		out __SP_H__,r29
+ 430 01c8 0FBE      		out __SREG__,__tmp_reg__
+ 431 01ca CDBF      		out __SP_L__,r28
+ 432               	/* prologue: function */
+ 433               	/* frame size = 17 */
+ 434 01cc 262F      		mov r18,r22
+ 435 01ce F42E      		mov r15,r20
+ 436               	.LM67:
+ 437 01d0 8E01      		movw r16,r28
+ 438 01d2 0F5F      		subi r16,lo8(-(1))
+ 439 01d4 1F4F      		sbci r17,hi8(-(1))
+ 440 01d6 B801      		movw r22,r16
+ 441               	.LVL17:
+ 442 01d8 422F      		mov r20,r18
+ 443               	.LVL18:
+ 444 01da 50E0      		ldi r21,lo8(0)
+ 445 01dc 0E94 0000 		call itoa
+ 446               	.LVL19:
+ 447               	.LM68:
+ 448 01e0 F801      		movw r30,r16
+ 449 01e2 0190      		ld __tmp_reg__,Z+
+ 450 01e4 0020      		tst __tmp_reg__
+ 451 01e6 01F4      		brne .-6
+ 452 01e8 3197      		sbiw r30,1
+ 453 01ea E01B      		sub r30,r16
+ 454 01ec F10B      		sbc r31,r17
+ 455 01ee 4F2D      		mov r20,r15
+ 456               	.LVL20:
+ 457 01f0 4E1B      		sub r20,r30
+ 458               	.LM69:
+ 459 01f2 1416      		cp __zero_reg__,r20
+ 460 01f4 04F4      		brge .L46
+ 461               	.LBB22:
+ 462               	.LBB23:
+ 463               	.LM70:
+ 464 01f6 80E3      		ldi r24,lo8(48)
+ 465               	.L51:
+ 466               	.LBE23:
+ 467               	.LBE22:
+ 468               	.LM71:
+ 469 01f8 4150      		subi r20,lo8(-(-1))
+ 470               	.L47:
+ 471               	.LBB25:
+ 472               	.LBB24:
+ 473               	.LM72:
+ 474 01fa 5D9B      		sbis 43-32,5
+ 475 01fc 00C0      		rjmp .L47
+ 476               	.LM73:
+ 477 01fe 8CB9      		out 44-32,r24
+ 478               	.LBE24:
+ 479               	.LBE25:
+ 480               	.LM74:
+ 481 0200 4423      		tst r20
+ 482 0202 01F4      		brne .L51
+ 483               	.LM75:
+ 484 0204 CE01      		movw r24,r28
+ 485 0206 0196      		adiw r24,1
+ 486 0208 0E94 0000 		call writeString
+ 487               	.LVL21:
+ 488 020c 00C0      		rjmp .L50
+ 489               	.LVL22:
+ 490               	.L46:
+ 491               	.LM76:
+ 492 020e 4195      		neg r20
+ 493 0210 C801      		movw r24,r16
+ 494 0212 6F2D      		mov r22,r15
+ 495 0214 0E94 0000 		call writeStringLength
+ 496               	.LVL23:
+ 497               	.L50:
+ 498               	/* epilogue start */
+ 499               	.LM77:
+ 500 0218 6196      		adiw r28,17
+ 501 021a 0FB6      		in __tmp_reg__,__SREG__
+ 502 021c F894      		cli
+ 503 021e DEBF      		out __SP_H__,r29
+ 504 0220 0FBE      		out __SREG__,__tmp_reg__
+ 505 0222 CDBF      		out __SP_L__,r28
+ 506 0224 CF91      		pop r28
+ 507 0226 DF91      		pop r29
+ 508 0228 1F91      		pop r17
+ 509 022a 0F91      		pop r16
+ 510 022c FF90      		pop r15
+ 511               	.LVL24:
+ 512 022e 0895      		ret
+ 513               	.LFE7:
+ 515               	.global	read_pos
+ 516               	.global	read_pos
+ 517               		.section .bss
+ 520               	read_pos:
+ 521 0000 00        		.skip 1,0
+ 522               	.global	write_pos
+ 523               	.global	write_pos
+ 526               	write_pos:
+ 527 0001 00        		.skip 1,0
+ 528               	.global	read_size
+ 529               	.global	read_size
+ 532               	read_size:
+ 533 0002 00        		.skip 1,0
+ 534               	.global	write_size
+ 535               	.global	write_size
+ 538               	write_size:
+ 539 0003 00        		.skip 1,0
+ 540               		.lcomm dummy.1704,1
+ 541               		.lcomm dummy.1655,1
+ 542               		.comm uart_status,1,1
+ 543               		.comm uart_receive_buffer,33,1
+ 648               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 RP6uart.c
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:2      *ABS*:0000003f __SREG__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:5      *ABS*:00000034 __CCP__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:18     .text:00000000 writeChar
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:37     .text:00000008 writeString
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:75     .text:0000001c writeNStringP
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:114    .text:00000030 writeStringLength
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:157    .text:0000004e __vector_13
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:538    .bss:00000003 write_size
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:532    .bss:00000002 read_size
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:526    .bss:00000001 write_pos
+                            *COM*:00000021 uart_receive_buffer
+                            *COM*:00000001 uart_status
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:540    .bss:00000005 dummy.1655
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:225    .text:000000bc readChar
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:520    .bss:00000000 read_pos
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:268    .text:000000fa readChars
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:322    .text:00000142 getBufferLength
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:338    .text:0000014e clearReceptionBuffer
+                             .bss:00000004 dummy.1704
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:367    .text:0000016e writeInteger
+C:\Users\Asus\AppData\Local\Temp/cc4Brz4t.s:415    .text:000001b2 writeIntegerLength
+
+UNDEFINED SYMBOLS
+itoa
+__do_clear_bss

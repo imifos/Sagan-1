@@ -1,0 +1,36 @@
+# 
+# Mars - South Huygen Basin Mission
+#
+
+# Make a tour to Check Point 3
+turnright 20
+forward 200
+turnleft 20
+forward 800
+turnleft 25
+forward 790
+turnleft 65
+forward 400
+# crossed Check Point 2
+turnleft 70
+forward 550
+turnleft 45
+forward 610
+
+# Check Point 3
+sendsignal
+
+# Step back and continue
+backward 100
+turnright 40
+forward 700
+
+# To park position at Check Point 4
+turnleft 110
+backward 210
+sendsignal
+
+# Wink!
+
+sendsignal
+sendsignal

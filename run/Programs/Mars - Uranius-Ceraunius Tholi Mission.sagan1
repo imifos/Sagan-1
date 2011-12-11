@@ -1,0 +1,48 @@
+# 
+# Mars - Uranius-Ceraunius Tholi Mission 
+#
+
+# To Check Point 1
+
+forward 300
+turnleft 60
+forward 655
+turnright 60
+forward 70
+#turnright 70
+#forward 20
+sendsignal
+
+# To Check Point 2
+
+turnright 120
+forward 500
+turnleft 30
+forward 900
+# upwards to CP2
+turnleft 90
+forward 820
+turnleft 110
+forward 120
+sendsignal
+
+# To Check Point 3
+
+backward 180
+turnright 110
+forward 130
+turnright 30
+forward 110
+sendsignal
+
+# Check point 5 - End mission
+
+backward 110
+turnright 150
+forward 1350
+sendsignal
+
+# Wink! :)
+
+sendsignal
+sendsignal

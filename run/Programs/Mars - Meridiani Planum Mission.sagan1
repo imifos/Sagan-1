@@ -1,0 +1,58 @@
+# 
+# Mars - Meridiani Planum Mission
+#
+
+# To Check Point 1
+
+forward 640
+turnleft 45
+forward 50
+sendsignal
+
+backward 50
+turnleft 100
+forward 500
+turnright 10
+forward 300
+turnright 45
+
+# cross check point 2a
+forward 400
+turnright 90
+forward 600
+# cross check point 2b
+
+# To Check Point 3
+
+turnright 30
+forward 500
+turnleft 30
+forward 300
+turnleft 30
+sendsignal
+
+# Return to Checkpoint 4
+
+turnleft 130
+forward 1300
+turnleft 90
+forward 300
+turnleft 20 
+forward 400
+
+# Avoid Green crater
+
+turnleft 45
+forward 200
+turnright 45
+forward 280
+
+# To Check Point 4
+
+turnright 90
+forward 120
+
+# Wink! :)
+
+sendsignal
+sendsignal
