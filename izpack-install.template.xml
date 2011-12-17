@@ -1,0 +1,45 @@
+<installation version="1.0">
+ 
+  <info>
+    <appname>Greenligh for Girl's Sagan-1</appname>
+    <appversion>@app.version@ [@app.date@]</appversion>
+    <appsubpath>sagan-1</appsubpath>
+    <javaversion>1.6</javaversion>
+    <url>http://sagan.be</url>
+  </info>
+
+  <locale>
+    <langpack iso3="eng"/>
+  </locale>
+   
+  <guiprefs width="800" height="600" resizable="no">
+    <laf name="substance">
+      <os family="windows" />
+      <os family="unix" />
+      <param name="variant" value="mist-silver" />
+    </laf>
+    <laf name="substance">
+      <os family="mac" />
+      <param name="variant" value="mist-aqua" />
+    </laf>
+    <modifier key="useHeadingPanel" value="yes" />
+  </guiprefs>
+ 
+  <panels>
+    <panel classname="HelloPanel"/>
+    <panel classname="TargetPanel"/>
+    <panel classname="InstallPanel"/>
+    <panel classname="SummaryPanel"/>
+    <panel classname="SimpleFinishPanel"/>
+  </panels>
+ 
+  <packs>
+    <pack name="Core Application" required="yes">
+      <description>Core files</description>
+      <fileset dir="@comp.basedir@/run" targetdir="${INSTALL_PATH}" override="true">
+      </fileset>
+    </pack>
+  </packs>
+ 
+</installation>
+       
