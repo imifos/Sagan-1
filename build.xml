@@ -45,9 +45,30 @@
             <tarfileset dir="run" includes="**/*.*" excludes="**/*.sh" prefix="sagan_1_simulator"/>
             <tarfileset dir="run" includes="**/*.sh" prefix="sagan_1_simulator" filemode="700"/>
         </tar>
-        
+       
     </target>
     
+    <target name="make-inst">
+        <loadproperties srcFile="build.properties"/>
+        
+        <filter token="izpackbasedir" value="${izpackbasedir}"/>
+        <filter token="comp.basedir" value="${comp.basedir}"/>
+        <filter token="app.version" value="${app.version}"/>
+        <filter token="app.date" value="${app.date}"/>
+        <copy file="izpack-install.template.xml" 
+              tofile="izpack-install.xml"
+              filtering="true" overwrite="true" />
+        
+        <taskdef name="IzPack" classpath="${izpackbasedir}/lib/compiler.jar"
+                 classname="com.izforge.izpack.ant.IzPackTask"/>
+        
+        <echo message="Makes the installer using IzPack"/>
+        <IzPack input="${comp.basedir}/izpack-install.xml"
+                output="${comp.basedir}/inst/sagan-1-install.jar"
+                installerType="standard"
+                basedir="${comp.basedir}/inst/"
+                IzPackDir="${izpackbasedir}"/>
+    </target>
     
     
     

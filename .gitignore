@@ -3,6 +3,11 @@
 
 # various potential build files
 nbproject/private/
+build/
+dist/
+inst/
+packages/
+izpack-install.xml
 
 # Mac filesystem dust
 /.DS_Store
