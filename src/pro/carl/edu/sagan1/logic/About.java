@@ -60,6 +60,9 @@ abstract public class About {
             "<br/><br/><hr/><b>Included libraries:</b><br/><br/>This distribution contains the RP6 libraries written by Dominik S. Herwald, released under GNU GPL v2"+
             " and distributed as part of the RP6 robot kit. These libraries are free and open-source software as well.<br/>"+
             "<br/>'Not eXactly C' (NXC) cross compiler written by John C. Hansen."+
-                    
+            // -------------------------------
+            "<br/><br/><hr/><b>Installer:</b><br/><br/>The installer has been build with BitRock InstallBuilder Professional, "+
+            " provided as free open-source project license by BitRock S.L. Thank you! <br/>"+
+            "<a href=\"http://www.bitrock.com\">http://www.bitrock.com</a><br><br/>"+
             "<br/><br/>";
 }
