@@ -12,3 +12,18 @@ izpack-install.xml
 # Mac filesystem dust
 /.DS_Store
 
+
+/run/RP6Out/.dep
+/run/RP6Out/sagan1_out.hex
+/run/RP6Out/sagan1_out.sagan1
+/run/RP6Comp/sagan1_out.lss
+/run/RP6Comp/sagan1_out.lst
+/run/RP6Comp/sagan1_out.o
+/run/RP6Comp/sagan1_out.hex
+/run/RP6Comp/sagan1_out.elf
+/run/RP6Comp/sagan1_out.map
+/run/RP6Comp/sagan1_out.c
+/run/RP6Comp/sagan1_out.sym
+/run/last_program_backup.sagan1
+/run/NXCComp/sagan1_out.sagan1
+/run/NXCComp/sagan1_out.nxc

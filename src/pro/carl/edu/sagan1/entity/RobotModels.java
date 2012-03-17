@@ -8,8 +8,10 @@ package pro.carl.edu.sagan1.entity;
  */
 public enum RobotModels {
     
-    RP6    ("rp6"),
-    HOPPER ("hopper");
+    RP6             ("rp6"),
+    HOPPER          ("hopper"),
+    LEGO_ROVER1     ("lego1"),
+    ;
     
     private String modelKey;
     

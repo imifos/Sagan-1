@@ -5,3 +5,16 @@ http://www.ict2act.be/greenlight2011/
 
 Pictures and Videos of kids using Sagan-1:
 http://sagan.be/impressions.html
+
+Versions:
+--------
+
+13.03.2012: V1.0.0 beta
+Integration of Lega NXT cross-compilation and upload. Rotation mode needs 
+to be fine tuned.
+
+20.10.2011: V0.8.0
+First release for the G4G event. Includes cross-compilation to Arexx RP6
+robot System.
+
+

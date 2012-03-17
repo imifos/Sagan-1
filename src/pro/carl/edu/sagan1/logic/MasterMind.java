@@ -16,10 +16,12 @@ import pro.carl.edu.sagan1.gui.i18n.I18N;
 import pro.carl.edu.sagan1.logic.scripting.ProgramExecutor;
 import pro.carl.edu.sagan1.logic.compiling.CompilationRunningException;
 import pro.carl.edu.sagan1.logic.scripting.SimulationRunningException;
-import pro.carl.edu.sagan1.logic.compiling.Rp6ProgramCompiler;
+import pro.carl.edu.sagan1.logic.compiling.ProgramCompiler;
 
 import static pro.carl.edu.sagan1.logic.MasterMind.log;
 import static pro.carl.edu.sagan1.gui.i18n.I18N.i18n;
+import pro.carl.edu.sagan1.logic.compiling.ProgramCompilerFactory;
+
 
 
 /**
@@ -27,7 +29,7 @@ import static pro.carl.edu.sagan1.gui.i18n.I18N.i18n;
  * logic. 
  * 
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
+ * @version 1.1.0 
  */
 public class MasterMind implements ActionListener {
         
@@ -49,6 +51,7 @@ public class MasterMind implements ActionListener {
     static public final int EVENTID_COMPILATION_SUCCEEDED=781123854;
     static public final int EVENTID_COMPILATION_PARSINGERROR=781123855;
     static public final int EVENTID_COMPILATION_OUTPUT=781123856;
+    static public final int EVENTID_COMPILATION_NOCOMPILER=781211283;
     
     
     /** Singletone instance of the state manager. */
@@ -77,7 +80,7 @@ public class MasterMind implements ActionListener {
     private ProgramExecutor executor;
     
     /** The programm executor instantiated during active compilation and communication. */
-    private Rp6ProgramCompiler compiler;
+    private ProgramCompiler compiler;
     
     /** Keeps the fact that this instance has been initialised once. */
     private boolean isStartedUp=false;
@@ -235,10 +238,19 @@ public class MasterMind implements ActionListener {
      */
     public void buildBinaryPackage(List<String> commandList) throws CompilationRunningException {
         
-        if (compiler!=null)
+        if (compiler!=null) // Should be avoided by GUI
             throw new CompilationRunningException();
         
-        compiler=new Rp6ProgramCompiler(commandList,getCurrentRobot());
+        // Get the compiler for the selected robot
+        compiler=ProgramCompilerFactory.getCompiler(getCurrentRobot());
+        if (compiler==null) {
+            // No adequate compiler available
+            log("No compiler for currently selected robot available. Sorry! (ID="+getCurrentRobot().getModelId()+")");
+            fireCompilationEvent(new ActionEvent(this,MasterMind.EVENTID_COMPILATION_NOCOMPILER,null));
+        }
+        
+        // Start compilation procedure
+        compiler.setupCompiler(commandList,getCurrentRobot());
         compiler.addEventListener(this);
         compiler.start();
     }
@@ -336,36 +348,36 @@ public class MasterMind implements ActionListener {
                 log("log.restartedsim");
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_STARTED: {   
+            case ProgramCompiler.EVENTID_COMPILING_STARTED: {   
                 log(""); log("log.compilationstart");
                 compilerEventId=MasterMind.EVENTID_COMPILATION_STARTED;
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_FAILED: {
+            case ProgramCompiler.EVENTID_COMPILING_FAILED: {
                 log("log.compilationfail"); log("");
                 
                 compilerEventId=MasterMind.EVENTID_COMPILATION_FAILED;
                 compiler=null; 
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_SUCCEEDED: {
+            case ProgramCompiler.EVENTID_COMPILING_SUCCEEDED: {
                 log("log.compilationsucceed"); log("");
                 compilerEventId=MasterMind.EVENTID_COMPILATION_SUCCEEDED;
                 compiler=null; 
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_PARSINGERROR: {
+            case ProgramCompiler.EVENTID_COMPILING_PARSINGERROR: {
                 log("log.compilationparsingerror"); log("");
                 compilerEventId=MasterMind.EVENTID_COMPILATION_PARSINGERROR;
                 compiler=null; 
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_CONFIGURATIONERROR: {
+            case ProgramCompiler.EVENTID_COMPILING_CONFIGURATIONERROR: {
                 log(e.getActionCommand()); log("");
                 compiler=null; 
                 break;
             } 
-            case Rp6ProgramCompiler.EVENTID_COMPILING_OUTPUT: {
+            case ProgramCompiler.EVENTID_COMPILING_OUTPUT: {
                 compilerEventId=MasterMind.EVENTID_COMPILATION_OUTPUT;
                 break;
             } 

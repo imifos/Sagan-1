@@ -93,7 +93,7 @@ public class AboutDisclaimerJPanel extends JPanel implements ActionListener {
      */
     private void updateGuiText() {
         refreshButton.setText("Update");
-        infoPane.setText(About.ABOUT+"<br/><hr><br/>Please click the 'Update' button.");
+        infoPane.setText(About.ABOUT+"<br/><hr><br/>Please click the 'Update' button to show computer information.");
         helpTextLine.setText(i18n("panel.sysinfo.helpline"));
     }
     

@@ -11,5 +11,5 @@ abstract public class Versions {
 
     final public static String APP_TITLE="Sagan One - Robot Simulator";
      
-    final public static String APP_VERSION="0.8.2 [05/12/2011]";
+    final public static String APP_VERSION="1.0.0 beta [15/03/2012]";
 }

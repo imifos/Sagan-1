@@ -3414,31 +3414,31 @@
  3939               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 RP6RobotBaseLib.c
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2      *ABS*:0000003f __SREG__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:5      *ABS*:00000034 __CCP__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:18     .text:00000000 enablePowerOnWarning
+  E:\Temp/ccSUM1EU.s:2      *ABS*:0000003f __SREG__
+  E:\Temp/ccSUM1EU.s:3      *ABS*:0000003e __SP_H__
+  E:\Temp/ccSUM1EU.s:4      *ABS*:0000003d __SP_L__
+  E:\Temp/ccSUM1EU.s:5      *ABS*:00000034 __CCP__
+  E:\Temp/ccSUM1EU.s:6      *ABS*:00000000 __tmp_reg__
+  E:\Temp/ccSUM1EU.s:7      *ABS*:00000001 __zero_reg__
+  E:\Temp/ccSUM1EU.s:18     .text:00000000 enablePowerOnWarning
                             *COM*:00000001 leds_on
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:35     .text:0000000e disablePowerOnWarning
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:50     .text:00000016 updateStatusLEDs
+  E:\Temp/ccSUM1EU.s:35     .text:0000000e disablePowerOnWarning
+  E:\Temp/ccSUM1EU.s:50     .text:00000016 updateStatusLEDs
                             *COM*:00000001 statusLEDs
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:118    .text:00000074 setLEDs
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:136    .text:0000007e getBumperLeft
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:172    .text:00000098 getBumperRight
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:208    .text:000000b2 BUMPERS_stateChanged_DUMMY
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:220    .text:000000b4 BUMPERS_setStateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3463   .data:00000007 BUMPERS_stateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:236    .text:000000be task_Bumpers
+  E:\Temp/ccSUM1EU.s:118    .text:00000074 setLEDs
+  E:\Temp/ccSUM1EU.s:136    .text:0000007e getBumperLeft
+  E:\Temp/ccSUM1EU.s:172    .text:00000098 getBumperRight
+  E:\Temp/ccSUM1EU.s:208    .text:000000b2 BUMPERS_stateChanged_DUMMY
+  E:\Temp/ccSUM1EU.s:220    .text:000000b4 BUMPERS_setStateChangedHandler
+  E:\Temp/ccSUM1EU.s:3463   .data:00000007 BUMPERS_stateChangedHandler
+  E:\Temp/ccSUM1EU.s:236    .text:000000be task_Bumpers
                             *COM*:00000001 bumper_timer
                             *COM*:00000001 bumper_left
                             *COM*:00000001 bumper_right
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:286    .text:000000fe readADC
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:327    .text:0000011e startADC
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:347    .text:00000128 task_ADC
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3405   .bss:00000011 current_adc_channel.1904
+  E:\Temp/ccSUM1EU.s:286    .text:000000fe readADC
+  E:\Temp/ccSUM1EU.s:327    .text:0000011e startADC
+  E:\Temp/ccSUM1EU.s:347    .text:00000128 task_ADC
+  E:\Temp/ccSUM1EU.s:3405   .bss:00000011 current_adc_channel.1904
                             *COM*:00000002 adcBat
                             *COM*:00000002 adcMotorCurrentLeft
                             *COM*:00000002 adcMotorCurrentRight
@@ -3446,70 +3446,70 @@ C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3405   .bss:00000011 current_adc_cha
                             *COM*:00000002 adcLSR
                             *COM*:00000002 adc0
                             *COM*:00000002 adc1
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:487    .text:000001da __vector_1
+  E:\Temp/ccSUM1EU.s:487    .text:000001da __vector_1
                             *COM*:00000002 mleft_dist
                             *COM*:00000002 mleft_counter
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:524    .text:0000021a __vector_2
+  E:\Temp/ccSUM1EU.s:524    .text:0000021a __vector_2
                             *COM*:00000002 mright_dist
                             *COM*:00000002 mright_counter
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:561    .text:0000025a MOTIONCONTROL_stateChanged_DUMMY
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:573    .text:0000025c MOTIONCONTROL_setStateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3408   .data:00000005 MOTIONCONTROL_stateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:589    .text:00000266 moveAtSpeed
+  E:\Temp/ccSUM1EU.s:561    .text:0000025a MOTIONCONTROL_stateChanged_DUMMY
+  E:\Temp/ccSUM1EU.s:573    .text:0000025c MOTIONCONTROL_setStateChangedHandler
+  E:\Temp/ccSUM1EU.s:3408   .data:00000005 MOTIONCONTROL_stateChangedHandler
+  E:\Temp/ccSUM1EU.s:589    .text:00000266 moveAtSpeed
                             *COM*:00000002 mleft_des_speed
                             *COM*:00000002 mright_des_speed
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:618    .text:00000284 changeDirection
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3381   .bss:00000004 drive_dir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3357   .bss:00000000 mleft_des_dir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3363   .bss:00000001 mright_des_dir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:656    .text:000002b0 isMovementComplete
+  E:\Temp/ccSUM1EU.s:618    .text:00000284 changeDirection
+  E:\Temp/ccSUM1EU.s:3381   .bss:00000004 drive_dir
+  E:\Temp/ccSUM1EU.s:3357   .bss:00000000 mleft_des_dir
+  E:\Temp/ccSUM1EU.s:3363   .bss:00000001 mright_des_dir
+  E:\Temp/ccSUM1EU.s:656    .text:000002b0 isMovementComplete
                             *COM*:00000001 motion_status
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:676    .text:000002c0 stop
+  E:\Temp/ccSUM1EU.s:676    .text:000002c0 stop
                             *COM*:00000002 left_i
                             *COM*:00000002 right_i
                             *COM*:00000001 motion_status_tmp
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:711    .text:000002fa setMotorPower
+  E:\Temp/ccSUM1EU.s:711    .text:000002fa setMotorPower
                             *COM*:00000002 mright_power
                             *COM*:00000002 mleft_power
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:740    .text:00000318 setMotorDir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3369   .bss:00000002 mleft_dir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3375   .bss:00000003 mright_dir
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:778    .text:0000033e IRCOMM_sendRC5
+  E:\Temp/ccSUM1EU.s:740    .text:00000318 setMotorDir
+  E:\Temp/ccSUM1EU.s:3369   .bss:00000002 mleft_dir
+  E:\Temp/ccSUM1EU.s:3375   .bss:00000003 mright_dir
+  E:\Temp/ccSUM1EU.s:778    .text:0000033e IRCOMM_sendRC5
                             *COM*:00000001 ircomm_send
                             *COM*:00000002 ircomm_data_tmp
                             *COM*:00000001 sysStatACS
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:835    .text:00000384 __vector_4
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3387   .data:00000000 acs_state
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3404   .bss:00000010 ircomm_pulse.2231
+  E:\Temp/ccSUM1EU.s:835    .text:00000384 __vector_4
+  E:\Temp/ccSUM1EU.s:3387   .data:00000000 acs_state
+  E:\Temp/ccSUM1EU.s:3404   .bss:00000010 ircomm_pulse.2231
                             *COM*:00000002 ircomm_data
                             *COM*:00000001 acs_pulse
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:957    .text:00000448 __vector_3
+  E:\Temp/ccSUM1EU.s:957    .text:00000448 __vector_3
                             *COM*:00000001 acs_event_counter
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1005   .text:00000492 IRCOMM_RC5dataReady_DUMMY
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1018   .text:00000494 IRCOMM_setRC5DataReadyHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3395   .data:00000001 IRCOMM_RC5dataReadyHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1034   .text:0000049e ACS_stateChanged_DUMMY
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1046   .text:000004a0 ACS_setStateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3399   .data:00000003 ACS_stateChangedHandler
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1062   .text:000004aa task_ACS
+  E:\Temp/ccSUM1EU.s:1005   .text:00000492 IRCOMM_RC5dataReady_DUMMY
+  E:\Temp/ccSUM1EU.s:1018   .text:00000494 IRCOMM_setRC5DataReadyHandler
+  E:\Temp/ccSUM1EU.s:3395   .data:00000001 IRCOMM_RC5dataReadyHandler
+  E:\Temp/ccSUM1EU.s:1034   .text:0000049e ACS_stateChanged_DUMMY
+  E:\Temp/ccSUM1EU.s:1046   .text:000004a0 ACS_setStateChangedHandler
+  E:\Temp/ccSUM1EU.s:3399   .data:00000003 ACS_stateChangedHandler
+  E:\Temp/ccSUM1EU.s:1062   .text:000004aa task_ACS
                             *COM*:00000002 acs_timer
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3403   .bss:0000000f acs_counter.2312
+  E:\Temp/ccSUM1EU.s:3403   .bss:0000000f acs_counter.2312
                             *COM*:00000002 IRCOMM_RC5_data_ok
                             *COM*:00000002 IRCOMM_RC5_data
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3402   .bss:0000000d acs_detect_timeout.2313
+  E:\Temp/ccSUM1EU.s:3402   .bss:0000000d acs_detect_timeout.2313
                             *COM*:00000001 obstacle_left
                             *COM*:00000001 obstacle_right
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3401   .bss:0000000c acs_l_tmp.2321
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3392   .bss:0000000b acs_r_tmp.2322
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1415   .text:00000730 disableACS
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1443   .text:0000074a enableACS
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1472   .text:00000766 setACSPwrOff
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1496   .text:00000774 setACSPwrLow
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1516   .text:0000077e setACSPwrMed
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1536   .text:00000788 setACSPwrHigh
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1556   .text:00000792 powerON
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1576   .text:000007a4 powerOFF
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1607   .text:000007c8 __vector_10
+  E:\Temp/ccSUM1EU.s:3401   .bss:0000000c acs_l_tmp.2321
+  E:\Temp/ccSUM1EU.s:3392   .bss:0000000b acs_r_tmp.2322
+  E:\Temp/ccSUM1EU.s:1415   .text:00000730 disableACS
+  E:\Temp/ccSUM1EU.s:1443   .text:0000074a enableACS
+  E:\Temp/ccSUM1EU.s:1472   .text:00000766 setACSPwrOff
+  E:\Temp/ccSUM1EU.s:1496   .text:00000774 setACSPwrLow
+  E:\Temp/ccSUM1EU.s:1516   .text:0000077e setACSPwrMed
+  E:\Temp/ccSUM1EU.s:1536   .text:00000788 setACSPwrHigh
+  E:\Temp/ccSUM1EU.s:1556   .text:00000792 powerON
+  E:\Temp/ccSUM1EU.s:1576   .text:000007a4 powerOFF
+  E:\Temp/ccSUM1EU.s:1607   .text:000007c8 __vector_10
                             *COM*:00000002 timer
                             *COM*:00000001 delay_timer
                             *COM*:00000001 ms_timer
@@ -3518,34 +3518,34 @@ C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:1607   .text:000007c8 __vector_10
                             *COM*:00000002 mright_speed
                             *COM*:00000002 mleft_speed
                             *COM*:00000001 motor_control
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3391   .bss:00000009 leds_on_timer.2547
+  E:\Temp/ccSUM1EU.s:3391   .bss:00000009 leds_on_timer.2547
                             *COM*:00000001 overcurrent_timer
                             *COM*:00000001 speed_adjust_timer
                             *COM*:00000001 mright_ptmp
                             *COM*:00000001 mleft_ptmp
                              .bss:00000005 IRCOMM_RC5_tmp.2550
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3389   .bss:00000007 IRCOMM_RC5_time.2549
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3390   .bss:00000008 IRCOMM_RC5_bit.2548
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2076   .text:00000b54 sleep
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2097   .text:00000b64 mSleep
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2132   .text:00000b80 delayCycles
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2159   .text:00000b8c extIntON
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2175   .text:00000b92 extIntOFF
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2191   .text:00000b98 initRobotBase
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2305   .text:00000c24 emergencyShutdown
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3457   .progmem.data:0000019c __c.1992
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3453   .progmem.data:00000161 __c.1994
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3449   .progmem.data:00000137 __c.1996
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3445   .progmem.data:00000125 __c.1998
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3441   .progmem.data:00000120 __c.2000
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3437   .progmem.data:0000011a __c.2002
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3433   .progmem.data:000000e9 __c.2004
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3429   .progmem.data:000000aa __c.2006
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3425   .progmem.data:0000008d __c.2008
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3421   .progmem.data:0000005d __c.2010
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3417   .progmem.data:00000026 __c.2012
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3413   .progmem.data:00000000 __c.2014
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2494   .text:00000d0e task_motionControl
+  E:\Temp/ccSUM1EU.s:3389   .bss:00000007 IRCOMM_RC5_time.2549
+  E:\Temp/ccSUM1EU.s:3390   .bss:00000008 IRCOMM_RC5_bit.2548
+  E:\Temp/ccSUM1EU.s:2076   .text:00000b54 sleep
+  E:\Temp/ccSUM1EU.s:2097   .text:00000b64 mSleep
+  E:\Temp/ccSUM1EU.s:2132   .text:00000b80 delayCycles
+  E:\Temp/ccSUM1EU.s:2159   .text:00000b8c extIntON
+  E:\Temp/ccSUM1EU.s:2175   .text:00000b92 extIntOFF
+  E:\Temp/ccSUM1EU.s:2191   .text:00000b98 initRobotBase
+  E:\Temp/ccSUM1EU.s:2305   .text:00000c24 emergencyShutdown
+  E:\Temp/ccSUM1EU.s:3457   .progmem.data:0000019c __c.1992
+  E:\Temp/ccSUM1EU.s:3453   .progmem.data:00000161 __c.1994
+  E:\Temp/ccSUM1EU.s:3449   .progmem.data:00000137 __c.1996
+  E:\Temp/ccSUM1EU.s:3445   .progmem.data:00000125 __c.1998
+  E:\Temp/ccSUM1EU.s:3441   .progmem.data:00000120 __c.2000
+  E:\Temp/ccSUM1EU.s:3437   .progmem.data:0000011a __c.2002
+  E:\Temp/ccSUM1EU.s:3433   .progmem.data:000000e9 __c.2004
+  E:\Temp/ccSUM1EU.s:3429   .progmem.data:000000aa __c.2006
+  E:\Temp/ccSUM1EU.s:3425   .progmem.data:0000008d __c.2008
+  E:\Temp/ccSUM1EU.s:3421   .progmem.data:0000005d __c.2010
+  E:\Temp/ccSUM1EU.s:3417   .progmem.data:00000026 __c.2012
+  E:\Temp/ccSUM1EU.s:3413   .progmem.data:00000000 __c.2014
+  E:\Temp/ccSUM1EU.s:2494   .text:00000d0e task_motionControl
                             *COM*:00000001 overcurrent_timeout
                             *COM*:00000001 overcurrent_errors
                             *COM*:00000001 overcurrent_error_clear
@@ -3555,11 +3555,11 @@ C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:2494   .text:00000d0e task_motionCon
                             *COM*:00000002 preDecelerate_L
                             *COM*:00000002 mleft_des_speed_tmp
                             *COM*:00000002 mright_des_speed_tmp
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3006   .text:000011bc task_RP6System
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3026   .text:000011ce rotate
+  E:\Temp/ccSUM1EU.s:3006   .text:000011bc task_RP6System
+  E:\Temp/ccSUM1EU.s:3026   .text:000011ce rotate
                             *COM*:00000002 distanceToMove_L
                             *COM*:00000002 distanceToMove_R
-C:\Users\Asus\AppData\Local\Temp/cc3PWWU9.s:3181   .text:000012d4 move
+  E:\Temp/ccSUM1EU.s:3181   .text:000012d4 move
 
 UNDEFINED SYMBOLS
 __udivmodhi4

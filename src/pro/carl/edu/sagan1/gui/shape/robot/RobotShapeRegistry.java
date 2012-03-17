@@ -28,6 +28,7 @@ public class RobotShapeRegistry {
             robots.put(SimpleRobotShape.MODELID,SimpleRobotShape.getInstance());
             robots.put(RP6RobotShape.MODELID,RP6RobotShape.getInstance());
             robots.put(HopperRobotShape.MODELID,HopperRobotShape.getInstance());
+            robots.put(LegoRover1Shape.MODELID,LegoRover1Shape.getInstance());
         }
     }
 

@@ -4,6 +4,7 @@ import pro.carl.edu.sagan1.entity.VehicleState;
 
 import java.util.ArrayList;
 import java.util.List;
+import pro.carl.edu.sagan1.entity.Robot;
 
 import pro.carl.edu.sagan1.logic.Configuration;
 
@@ -54,11 +55,12 @@ public class SingleCommand {
      * Returns the cross-language instruction for the command when target is the 
      * RP6 robot system.
      */
-    public StringBuilder appendRP6CommandString(StringBuilder prog) {
+    public String getRP6CommandString() {
         
         int rotationSpeed=Configuration.getInstance().getRp6RotationSpeed();
         int linemoveSpeed=Configuration.getInstance().getRp6LineMoveSpeed();
-                
+            
+        StringBuilder prog=new StringBuilder(200);
         if (command.equals(Commands.TURNRIGHT)) {
             prog.append("rotate(").append(rotationSpeed).append(",RIGHT,").append(degrees).append(",true);");
         }
@@ -77,7 +79,45 @@ public class SingleCommand {
         else if (command.equals(Commands.WAIT)) {
             prog.append("mSleep(").append(time>0 ? time:1000).append(");");
         }
-        return prog;
+        return prog.toString();
+    }
+    
+    /**
+     * Returns the cross-language instruction for the command when target is the 
+     * LEGO NXT robot system.
+     */
+    public String getNXTCommandString(Robot robot) {
+        
+        int moveSpeed=Configuration.getInstance().getNxtLineMoveSpeed();
+        
+        double msAhead=robot.getNxtCalibrationTimePerMillimeter();
+        double msRotate=robot.getNxtCalibrationTimePerDegree();
+            
+        StringBuilder prog=new StringBuilder(200);
+        if (command.equals(Commands.TURNRIGHT)) {
+            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",100);  ").
+                 append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
+            // Crutial to perfom calculations as floating point
+        }
+        else if (command.equals(Commands.TURNLEFT)) {
+            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);  ").
+                 append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
+        }
+        else if (command.equals(Commands.FORWARD)) {
+            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",0);  ").
+                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
+        }
+        else if (command.equals(Commands.BACKWARD)) {
+            prog.append("if (stopIt!=1) { OnRevSync(OUT_BC,").append(moveSpeed).append(",0);  ").
+                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
+        }
+        else if (command.equals(Commands.SENDSIGNAL)) {
+            prog.append("if (stopIt!=1) { Off(OUT_BC); signal(); }");
+        }
+        else if (command.equals(Commands.WAIT)) {
+            prog.append("if (stopIt!=1) { Off(OUT_BC); Wait(").append(time>0 ? time:1000).append("); }");
+        }
+        return prog.toString();
     }
     
     

@@ -38,7 +38,7 @@ import static pro.carl.edu.sagan1.logic.MasterMind.log;
  * Program editor panel.
  * 
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
+ * @version 1.1.0
  */
 public class ProgramJPanel extends JPanel implements ActionListener {
     
@@ -190,6 +190,10 @@ public class ProgramJPanel extends JPanel implements ActionListener {
             case MasterMind.EVENTID_COMPILATION_PARSINGERROR: {
                 helpTextStatus.setText(i18n("statusmsg.prog.syntaxerr")+" "+e.getActionCommand());
                 compileButton.setEnabled(true);
+                return;
+            }
+            case MasterMind.EVENTID_COMPILATION_NOCOMPILER: {
+                JOptionPane.showMessageDialog(this,i18n("statusmsg.prog.nocompiler"),i18n("panel.program.compile"),JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }

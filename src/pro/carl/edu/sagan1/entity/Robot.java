@@ -14,7 +14,7 @@ import static pro.carl.edu.sagan1.logic.MasterMind.log;
  * Defines one single robot entity.
  * 
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
+ * @version 1.0.1 
  */
 public class Robot {
     
@@ -27,6 +27,11 @@ public class Robot {
     
     private double rp6CalibrationEncoderResolution;
     private double rp6CalibrationRotationFactor;
+    
+    private int nxtCalibrationUnitRotationTime;
+    private int nxtCalibrationUnitMovementTime;
+    private double nxtCalibrationTimePerDegree;     // must be 'double' to avoid rounding error 
+    private double nxtCalibrationTimePerMillimeter; // accumulations due to division then re-multiplication.
  
     /**
      * Constructor.
@@ -98,9 +103,41 @@ public class Robot {
     public void setRp6CalibrationRotationFactor(double calibrationRotationFactor) {
         this.rp6CalibrationRotationFactor = calibrationRotationFactor;
     }
-    
+   
     public BufferedImage getRobotPicture() {
         return robotPicture;
     }
-    
+
+    public int getNxtCalibrationUnitMovementTime() {
+        return nxtCalibrationUnitMovementTime;
+    }
+
+    public void setNxtCalibrationUnitMovementTime(int nxtCalibrationUnitMovementTime) {
+        this.nxtCalibrationUnitMovementTime = nxtCalibrationUnitMovementTime;
+    }
+
+    public int getNxtCalibrationUnitRotationTime() {
+        return nxtCalibrationUnitRotationTime;
+    }
+
+    public void setNxtCalibrationUnitRotationTime(int nxtCalibrationUnitRotationTime) {
+        this.nxtCalibrationUnitRotationTime = nxtCalibrationUnitRotationTime;
+    }
+
+    public double getNxtCalibrationTimePerDegree() {
+        return nxtCalibrationTimePerDegree;
+    }
+
+    public void setNxtCalibrationTimePerDegree(double nxtCalibrationTimePerDegree) {
+        this.nxtCalibrationTimePerDegree = nxtCalibrationTimePerDegree;
+    }
+
+    public double getNxtCalibrationTimePerMillimeter() {
+        return nxtCalibrationTimePerMillimeter;
+    }
+
+    public void setNxtCalibrationTimePerMillimeter(double nxtCalibrationTimePerMillimeter) {
+        this.nxtCalibrationTimePerMillimeter = nxtCalibrationTimePerMillimeter;
+    }
+
 }

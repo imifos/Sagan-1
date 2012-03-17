@@ -41,7 +41,13 @@ public enum ConfigProperties {
     ROBOTS_SUFFIX_PICTURE               ("picture"),
     ROBOTS_SUFFIX_RP6_ENC_RES           ("rp6.calibration.encoder_resolution"),
     ROBOTS_SUFFIX_RP6_ROT_FACT          ("rp6.calibration.rotation_factor"),
-    
+    //
+    ROBOTS_SUFFIX_NXT_ROTATION_TIME     ("nxt.calibration.fullrotation.time"),
+    ROBOTS_SUFFIX_NXT_LINE_TIME         ("nxt.calibration.onemeter.time"),
+    ROBOTS_SUFFIX_NXT_SPEED             ("config.nxt.execution.speed"),
+    ROBOTS_SUFFIX_NXT_CAL_DIST          ("config.nxt.execution.calibration.distance.mm"),
+    ROBOTS_SUFFIX_NXT_CAL_DEGREE        ("config.nxt.execution.calibration.angle.degree"),
+
     // Display
     
     DISP_SHOWCURSORCOORDS               ("config.display.show.mouse.coordinates"),
@@ -59,7 +65,9 @@ public enum ConfigProperties {
     RP6_EXEC_ROTATIONSPEED              ("config.rp6.execution.rotation.speed"),
     RP6_EXEC_LINEMOVESPEED              ("config.rp6.execution.linemove.speed"),
     
+    // NXT
     
+    NXT_DIR_COMPILING                   ("config.nxt.dir.compiling"),
         
     $("");
            

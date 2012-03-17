@@ -42,6 +42,10 @@ public class Configuration {
     private int animationTimerFrequency=100;
     private int rp6RotationSpeed=50;
     private int rp6LineMoveSpeed=50;
+    private int nxtLineMoveSpeed=40;
+    private int nxtCalibrationDistance=1000;
+    private int nxtCalibrationAngle=360;
+    
     private boolean showMouseCoordinates=false;
         
     /**
@@ -49,6 +53,7 @@ public class Configuration {
      * selection. Used in case of multi language descriptions for entities.
      */
     public static class Language {
+        
         private String code;
         private String label;
         
@@ -165,6 +170,15 @@ public class Configuration {
         rp6LineMoveSpeed=Integer.parseInt(getProperty(ConfigProperties.RP6_EXEC_LINEMOVESPEED));
         if (rp6LineMoveSpeed<15 || rp6LineMoveSpeed>120) rp6LineMoveSpeed=50;
         
+        nxtLineMoveSpeed=Integer.parseInt(getProperty(ConfigProperties.ROBOTS_SUFFIX_NXT_SPEED));
+        if (nxtLineMoveSpeed<10 || nxtLineMoveSpeed>100) nxtLineMoveSpeed=40;
+              
+        nxtCalibrationDistance=Integer.parseInt(getProperty(ConfigProperties.ROBOTS_SUFFIX_NXT_CAL_DIST));
+        if (nxtCalibrationDistance<1) nxtCalibrationDistance=1;
+        nxtCalibrationAngle=Integer.parseInt(getProperty(ConfigProperties.ROBOTS_SUFFIX_NXT_CAL_DEGREE));
+        if (nxtCalibrationAngle<0) nxtCalibrationAngle=0;
+        if (nxtCalibrationAngle>360) nxtCalibrationAngle=360;
+                
         showMouseCoordinates=false;
         if ("TRUE".equalsIgnoreCase(getProperty(ConfigProperties.DISP_SHOWCURSORCOORDS)))
             showMouseCoordinates=true;
@@ -193,6 +207,15 @@ public class Configuration {
             rp6=data.get(ConfigProperties.ROBOTS_SUFFIX_RP6_ROT_FACT.toString());
             r.setRp6CalibrationRotationFactor((rp6==null || rp6.isEmpty()) ? 0.0 : Double.parseDouble(rp6));
 
+            String nxt=data.get(ConfigProperties.ROBOTS_SUFFIX_NXT_ROTATION_TIME.toString());
+            r.setNxtCalibrationUnitRotationTime((nxt==null || nxt.isEmpty()) ? 0 : Integer.parseInt(nxt));
+            nxt=data.get(ConfigProperties.ROBOTS_SUFFIX_NXT_LINE_TIME.toString());
+            r.setNxtCalibrationUnitMovementTime((nxt==null || nxt.isEmpty()) ? 0 : Integer.parseInt(nxt));
+            
+            // (Config parsed before robots) 
+            r.setNxtCalibrationTimePerDegree((double)r.getNxtCalibrationUnitRotationTime()/(double)getNxtCalibrationAngle());
+            r.setNxtCalibrationTimePerMillimeter((double)r.getNxtCalibrationUnitMovementTime()/(double)getNxtCalibrationDistance());
+            
             // TODO: ADD  r.validate() true/false w/ error in log, add only valid robot entries, do same for other entities
             robots.put(rob,r);
         }
@@ -384,5 +407,26 @@ public class Configuration {
     public boolean showMouseCoordinates() {
         return showMouseCoordinates;
     }
-        
+
+    /**
+     * 
+     */
+    public int getNxtLineMoveSpeed() {
+        return nxtLineMoveSpeed;
+    }
+
+    /**
+     * 
+     */
+    public int getNxtCalibrationAngle() {
+        return nxtCalibrationAngle;
+    }
+
+    /**
+     * 
+     */
+    public int getNxtCalibrationDistance() {
+        return nxtCalibrationDistance;
+    }
+   
 }

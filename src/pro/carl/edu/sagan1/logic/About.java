@@ -49,10 +49,17 @@ abstract public class About {
             "<br/><br/>To upload the HEX file into the RP6, please use the classic RP6Loader "+
             "(<a href=\"http://www.arexx.com/rp6/html/en/software.htm\">http://www.arexx.com/rp6/html/en/software.htm</a>) or the newer "+
             "version RobotLoader (<a href=\"http://www.arexx.com/rp6/downloads/RobotLoader_20100712.zip\">http://www.arexx.com/rp6/downloads/RobotLoader_20100712.zip</a>)."+
+            //
+            "<br/><hr/><b>Cross-compilation to Lego NXT Mindstorm files and upload:</b><br/><br/>"+
+            "The compilation and the upload of your program into a NXT program is integrated into Sagan One when running under Windows."+
+            "<br/><br/>Sagan One uses the 'Not eXactly C' (NXC) cross compiler written by John C. Hansen. There is also a Linux and Mac version that "+
+            "we will integrate later, if possible. Please don't hesitate to buy John's great book about Lego NXT Power-Programing.<br><br/>"+
+            "The latest version of the NXC/NBC packages can be found here: <a href=\"http://bricxcc.sourceforge.net/nbc/\">http://bricxcc.sourceforge.net/nbc/</a>.<br><br/>"+
+            "<b>Please note that the NXT support is currently in a beta phase. We are still trying to find the most precise operation mode."+
             // -------------------------------
             "<br/><br/><hr/><b>Included libraries:</b><br/><br/>This distribution contains the RP6 libraries written by Dominik S. Herwald, released under GNU GPL v2"+
             " and distributed as part of the RP6 robot kit. These libraries are free and open-source software as well.<br/>"+
-            
+            "<br/>'Not eXactly C' (NXC) cross compiler written by John C. Hansen."+
                     
-            "";
+            "<br/><br/>";
 }
