@@ -91,14 +91,14 @@ public class LegoRover1Shape implements RobotShape {
         g.drawString("NXT",x0+mm2px(pos.getX()-W/2-5)+25,y0-mm2px(pos.getY()+10));
         
         // Sensor Head
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(x0+mm2px(pos.getX()-10),y0-mm2px(pos.getY()+H/2+60),mm2px(20),mm2px(90));    
-        g.setColor(Color.BLACK);
-        g.drawRect(x0+mm2px(pos.getX()-10),y0-mm2px(pos.getY()+H/2+60),mm2px(20),mm2px(90));    
+        //g.setColor(Color.LIGHT_GRAY);
+        //g.fillRect(x0+mm2px(pos.getX()-10),y0-mm2px(pos.getY()+H/2+60),mm2px(20),mm2px(90));    
+        //g.setColor(Color.BLACK);
+        //g.drawRect(x0+mm2px(pos.getX()-10),y0-mm2px(pos.getY()+H/2+60),mm2px(20),mm2px(90));    
         g.setColor(MYORANGE);
-        g.fillRect(x0+mm2px(pos.getX()-20),y0-mm2px(pos.getY()+H/2+60),mm2px(40),mm2px(20));    
+        g.fillRect(x0+mm2px(pos.getX()-20),y0-mm2px(pos.getY()+H/2+0),mm2px(40),mm2px(20));    
         g.setColor(Color.BLACK);
-        g.drawRect(x0+mm2px(pos.getX()-20),y0-mm2px(pos.getY()+H/2+60),mm2px(40),mm2px(20));    
+        g.drawRect(x0+mm2px(pos.getX()-20),y0-mm2px(pos.getY()+H/2+0),mm2px(40),mm2px(20));    
                 
         // Both chains
         g.setColor(Color.BLACK);
