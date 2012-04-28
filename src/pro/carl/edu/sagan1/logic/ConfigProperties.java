@@ -44,6 +44,8 @@ public enum ConfigProperties {
     //
     ROBOTS_SUFFIX_NXT_ROTATION_TIME     ("nxt.calibration.fullrotation.time"),
     ROBOTS_SUFFIX_NXT_LINE_TIME         ("nxt.calibration.onemeter.time"),
+    ROBOTS_SUFFIX_NXT_USES_COMPASS      ("nxt.uses.compass.sensor"),
+    
     ROBOTS_SUFFIX_NXT_SPEED             ("config.nxt.execution.speed"),
     ROBOTS_SUFFIX_NXT_CAL_DIST          ("config.nxt.execution.calibration.distance.mm"),
     ROBOTS_SUFFIX_NXT_CAL_DEGREE        ("config.nxt.execution.calibration.angle.degree"),
