@@ -4,7 +4,6 @@ import pro.carl.edu.sagan1.entity.VehicleState;
 
 import java.util.ArrayList;
 import java.util.List;
-import pro.carl.edu.sagan1.entity.Robot;
 
 import pro.carl.edu.sagan1.logic.Configuration;
 
@@ -12,19 +11,18 @@ import pro.carl.edu.sagan1.logic.Configuration;
 
 /**
  * Ecapsulates one single SAGAN script command and ALL information about its 
- * execution for all known targets, simulator and robots.
+ * SIMULATION.
  * <p/>
  * Holds all logic allowing a command to be executed in the simulator. By taking 
  * the instruction as input, it returns a list of steps to execute for the 
  * animation at "timer" speed. In case of an accelerated simulation, the list 
  * just contains start and end point.
  * <p/>
- * This class also contains the knowledge what robot hardware related command has
- * to be produced when executed not in the simulator but into a cross-language
- * source code.
+ * The knowledge about robot hardware related commands is located in the 
+ * specific compiler classes.
  *  
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
+ * @version 1.1.0 - 26/04/2012
  */
 public class SingleCommand {
     
@@ -40,6 +38,7 @@ public class SingleCommand {
     /** List of generated intermediary steps, if this applies (simulation only). */
     List<VehicleState> steps=new ArrayList<VehicleState>();
     
+    
     /**
      * Constructor.
      */
@@ -50,76 +49,6 @@ public class SingleCommand {
         this.time=(time==null ? -1 : time.intValue());
     }
 
-    
-    /**
-     * Returns the cross-language instruction for the command when target is the 
-     * RP6 robot system.
-     */
-    public String getRP6CommandString() {
-        
-        int rotationSpeed=Configuration.getInstance().getRp6RotationSpeed();
-        int linemoveSpeed=Configuration.getInstance().getRp6LineMoveSpeed();
-            
-        StringBuilder prog=new StringBuilder(200);
-        if (command.equals(Commands.TURNRIGHT)) {
-            prog.append("rotate(").append(rotationSpeed).append(",RIGHT,").append(degrees).append(",true);");
-        }
-        else if (command.equals(Commands.TURNLEFT)) {
-            prog.append("rotate(").append(rotationSpeed).append(",LEFT,").append(degrees).append(",true);");
-        }
-        else if (command.equals(Commands.FORWARD)) {
-            prog.append("move(").append(linemoveSpeed).append(",FWD,DIST_MM(").append(distance).append("),true);");        
-        }
-        else if (command.equals(Commands.BACKWARD)) {
-            prog.append("move(").append(linemoveSpeed).append(",BWD,DIST_MM(").append(distance).append("),true);");
-        }
-        else if (command.equals(Commands.SENDSIGNAL)) {
-            prog.append("signal();");
-        }
-        else if (command.equals(Commands.WAIT)) {
-            prog.append("mSleep(").append(time>0 ? time:1000).append(");");
-        }
-        return prog.toString();
-    }
-    
-    /**
-     * Returns the cross-language instruction for the command when target is the 
-     * LEGO NXT robot system.
-     */
-    public String getNXTCommandString(Robot robot) {
-        
-        int moveSpeed=Configuration.getInstance().getNxtLineMoveSpeed();
-        
-        double msAhead=robot.getNxtCalibrationTimePerMillimeter();
-        double msRotate=robot.getNxtCalibrationTimePerDegree();
-            
-        StringBuilder prog=new StringBuilder(200);
-        if (command.equals(Commands.TURNRIGHT)) {
-            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",100);  ").
-                 append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
-            // Crutial to perfom calculations as floating point
-        }
-        else if (command.equals(Commands.TURNLEFT)) {
-            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);  ").
-                 append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
-        }
-        else if (command.equals(Commands.FORWARD)) {
-            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",0);  ").
-                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
-        }
-        else if (command.equals(Commands.BACKWARD)) {
-            prog.append("if (stopIt!=1) { OnRevSync(OUT_BC,").append(moveSpeed).append(",0);  ").
-                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
-        }
-        else if (command.equals(Commands.SENDSIGNAL)) {
-            prog.append("if (stopIt!=1) { Off(OUT_BC); signal(); }");
-        }
-        else if (command.equals(Commands.WAIT)) {
-            prog.append("if (stopIt!=1) { Off(OUT_BC); Wait(").append(time>0 ? time:1000).append("); }");
-        }
-        return prog.toString();
-    }
-    
     
     /**
      * Executes the command into the "steps" micro-step list when target is the 
@@ -302,4 +231,30 @@ public class SingleCommand {
     public Commands getCommandInstruction() {
         return command;
     }
+
+    public int getDegrees() {
+        return degrees;
+    }
+
+    public void setDegrees(int degrees) {
+        this.degrees = degrees;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+    
+    
 }
