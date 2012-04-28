@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import pro.carl.edu.sagan1.entity.Robot;
 import pro.carl.edu.sagan1.logic.ConfigProperties;
 import pro.carl.edu.sagan1.logic.Configuration;
+import pro.carl.edu.sagan1.logic.parsing.Commands;
 import pro.carl.edu.sagan1.logic.parsing.SingleCommand;
 
 
@@ -85,13 +86,80 @@ public class NxtProgramCompiler extends ProgramCompiler {
     }
 
     /**
+     * Returns the cross-language instruction for the command when target is the 
+     * LEGO NXT robot system.
+     * 
      * @see ProgramCompiler#doGetSpecificCommandString(pro.carl.edu.sagan1.logic.parsing.SingleCommand) 
      */
     @Override
     protected String doGetSpecificCommandString(SingleCommand singleCommandToExec,Robot robot) {
-        return singleCommandToExec.getNXTCommandString(robot);
+        
+        Commands command=singleCommandToExec.getCommandInstruction();
+        int distance=singleCommandToExec.getDistance();
+        int degrees=singleCommandToExec.getDegrees();
+        int time=singleCommandToExec.getTime();
+        
+        int moveSpeed=Configuration.getInstance().getNxtLineMoveSpeed();
+        
+        double msAhead=robot.getNxtCalibrationTimePerMillimeter();
+        double msRotate=robot.getNxtCalibrationTimePerDegree();
+        boolean usesCompass=robot.isNxtUsesCompassSensor();
+                
+        if (command.isMetaCommand()) 
+            return "";
+                
+        StringBuilder prog=new StringBuilder(200);
+        if (command.equals(Commands.TURNRIGHT)) {
+            if (!usesCompass) {
+                prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",100);  ").
+                     append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
+                // Crutial to perfom calculations as floating point
+            }
+            else {
+                prog.append("if (stopIt!=1) { \n")
+                        .append("   current=SensorHTCompass(S2);\n")
+                        .append("   target=current+").append(degrees).append(";\n")
+                        .append("   if (target>360) target-=359;\n")
+                        .append("   OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);\n")
+                        .append("   while(current!=target && stopIt!=1) { ")
+                        .append("       current=SensorHTCompass(S2);  }\n")
+                        .append("   Off(OUT_BC); }");
+            }
+        }
+        else if (command.equals(Commands.TURNLEFT)) {
+            if (!usesCompass) {
+                prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);  ").
+                     append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
+            }
+            else {
+                prog.append("if (stopIt!=1) { \n")
+                    .append("   current=SensorHTCompass(S2);\n")
+                    .append("   target=current-").append(degrees).append(";\n")
+                    .append("   if (target<=0) target+=359;\n")
+                    .append("   OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);\n")
+                    .append("   while(current!=target && stopIt!=1) {")
+                    .append("       current=SensorHTCompass(S2);  }\n")
+                    .append("   Off(OUT_BC); }");
+            }
+        }
+        else if (command.equals(Commands.FORWARD)) {
+            prog.append("if (stopIt!=1) { OnFwdSync(OUT_BC,").append(moveSpeed).append(",0);  ").
+                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
+        }
+        else if (command.equals(Commands.BACKWARD)) {
+            prog.append("if (stopIt!=1) { OnRevSync(OUT_BC,").append(moveSpeed).append(",0);  ").
+                 append("Wait(").append((int)(msAhead*((double)distance))).append("); Off(OUT_BC); }");
+        }
+        else if (command.equals(Commands.SENDSIGNAL)) {
+            prog.append("if (stopIt!=1) { Off(OUT_BC); signal(); }");
+        }
+        else if (command.equals(Commands.WAIT)) {
+            prog.append("if (stopIt!=1) { Off(OUT_BC); Wait(").append(time>0 ? time:1000).append("); }");
+        }
+        return prog.toString();
     }
     
+        
     /**
      * @see ProgramCompiler#beforeCompilationOutput(pro.carl.edu.sagan1.entity.Robot) 
      */
