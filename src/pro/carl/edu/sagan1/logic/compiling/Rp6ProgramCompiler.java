@@ -13,6 +13,7 @@ import pro.carl.edu.sagan1.logic.Configuration;
 
 
 import static pro.carl.edu.sagan1.logic.MasterMind.log;
+import pro.carl.edu.sagan1.logic.parsing.Commands;
 import pro.carl.edu.sagan1.logic.parsing.SingleCommand;
 
 
@@ -87,11 +88,45 @@ public class Rp6ProgramCompiler extends ProgramCompiler {
     
     
     /**
+     * Returns the cross-language instruction for the command when target is the 
+     * RP6 robot system.
+     * 
      * @see ProgramCompiler#doGetSpecificCommandString(pro.carl.edu.sagan1.logic.parsing.SingleCommand) 
      */
     @Override
     protected String doGetSpecificCommandString(SingleCommand singleCommandToExec,Robot robot) {
-        return singleCommandToExec.getRP6CommandString();
+
+        Commands command=singleCommandToExec.getCommandInstruction();
+        int distance=singleCommandToExec.getDistance();
+        int degrees=singleCommandToExec.getDegrees();
+        int time=singleCommandToExec.getTime();
+        
+        int rotationSpeed=Configuration.getInstance().getRp6RotationSpeed();
+        int linemoveSpeed=Configuration.getInstance().getRp6LineMoveSpeed();
+        
+        if (command.isMetaCommand()) 
+            return "";
+        
+        StringBuilder prog=new StringBuilder(200);
+        if (command.equals(Commands.TURNRIGHT)) {
+            prog.append("rotate(").append(rotationSpeed).append(",RIGHT,").append(degrees).append(",true);");
+        }
+        else if (command.equals(Commands.TURNLEFT)) {
+            prog.append("rotate(").append(rotationSpeed).append(",LEFT,").append(degrees).append(",true);");
+        }
+        else if (command.equals(Commands.FORWARD)) {
+            prog.append("move(").append(linemoveSpeed).append(",FWD,DIST_MM(").append(distance).append("),true);");        
+        }
+        else if (command.equals(Commands.BACKWARD)) {
+            prog.append("move(").append(linemoveSpeed).append(",BWD,DIST_MM(").append(distance).append("),true);");
+        }
+        else if (command.equals(Commands.SENDSIGNAL)) {
+            prog.append("signal();");
+        }
+        else if (command.equals(Commands.WAIT)) {
+            prog.append("mSleep(").append(time>0 ? time:1000).append(");");
+        }
+        return prog.toString();
     }
     
     
