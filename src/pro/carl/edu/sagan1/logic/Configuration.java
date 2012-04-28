@@ -216,6 +216,9 @@ public class Configuration {
             r.setNxtCalibrationTimePerDegree((double)r.getNxtCalibrationUnitRotationTime()/(double)getNxtCalibrationAngle());
             r.setNxtCalibrationTimePerMillimeter((double)r.getNxtCalibrationUnitMovementTime()/(double)getNxtCalibrationDistance());
             
+            nxt=data.get(ConfigProperties.ROBOTS_SUFFIX_NXT_USES_COMPASS.toString());
+            r.setNxtUsesCompassSensor((nxt==null || nxt.isEmpty()) ? false : Boolean.parseBoolean(nxt));
+            
             // TODO: ADD  r.validate() true/false w/ error in log, add only valid robot entries, do same for other entities
             robots.put(rob,r);
         }
