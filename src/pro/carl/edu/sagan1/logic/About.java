@@ -1,10 +1,29 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic;
 
 /**
  * Contains the ABOUT and CREDITS text.
  * 
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
  */
 abstract public class About {
       
@@ -15,7 +34,7 @@ abstract public class About {
             
             "<html><b><h1>"+Versions.APP_TITLE+", Version "+Versions.APP_VERSION+
             "</h1><br/>Developed by Tasha CARL, <a href=\"http://carl.pro\">http://carl.pro</a>, Mail: tasha"+(char)('B'-2)+"carl"+(char)('0'-2)+"pro<br/><br/>"+
-            "Project web page: <a href=\"http://sagan.be\">http://sagan.be</a><br/><br/>"+
+            "Project web page: <a href=\"http://sagan-project.eu\">http://sagan-project.eu</a><br/><br/>"+
             // -------------------------------
             "The program is released as free software (F/OSS) under the GNU GPL v3 license (<a href=\"http://www.gnu.org/licenses/gpl-faq.html\">"+
             "http://www.gnu.org/licenses/gpl-faq.html</a>). This means "+

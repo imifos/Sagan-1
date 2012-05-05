@@ -1,3 +1,23 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic;
 
 /**
@@ -45,6 +65,7 @@ public enum ConfigProperties {
     ROBOTS_SUFFIX_NXT_ROTATION_TIME     ("nxt.calibration.fullrotation.time"),
     ROBOTS_SUFFIX_NXT_LINE_TIME         ("nxt.calibration.onemeter.time"),
     ROBOTS_SUFFIX_NXT_USES_COMPASS      ("nxt.uses.compass.sensor"),
+    ROBOTS_SUFFIX_NXT_USES_PRECISE_ROT  ("nxt.uses.compass.highprecision.rotation"),
     
     ROBOTS_SUFFIX_NXT_SPEED             ("config.nxt.execution.speed"),
     ROBOTS_SUFFIX_NXT_CAL_DIST          ("config.nxt.execution.calibration.distance.mm"),

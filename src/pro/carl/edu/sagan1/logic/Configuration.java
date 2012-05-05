@@ -1,3 +1,23 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic;
 
 import java.awt.Image;
@@ -218,6 +238,9 @@ public class Configuration {
             
             nxt=data.get(ConfigProperties.ROBOTS_SUFFIX_NXT_USES_COMPASS.toString());
             r.setNxtUsesCompassSensor((nxt==null || nxt.isEmpty()) ? false : Boolean.parseBoolean(nxt));
+            
+            nxt=data.get(ConfigProperties.ROBOTS_SUFFIX_NXT_USES_PRECISE_ROT.toString());
+            r.setNxtUsesHighPrecisionCompassRotation((nxt==null || nxt.isEmpty()) ? false : Boolean.parseBoolean(nxt));
             
             // TODO: ADD  r.validate() true/false w/ error in log, add only valid robot entries, do same for other entities
             robots.put(rob,r);

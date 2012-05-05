@@ -1,3 +1,23 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic;
 
 /**
@@ -5,11 +25,10 @@ package pro.carl.edu.sagan1.logic;
  * template Versions-java-template. 
  *
  * @since 0.0
- * @version 1.0.0 - 20/10/2011
  */
 abstract public class Versions {
 
     final public static String APP_TITLE="Sagan One - Robot Simulator";
      
-    final public static String APP_VERSION="1.0.1 beta [27/04/2012]";
+    final public static String APP_VERSION="1.0.1 [20/05/2012]";
 }

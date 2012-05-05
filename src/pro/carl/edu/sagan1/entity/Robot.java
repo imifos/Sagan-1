@@ -33,6 +33,7 @@ public class Robot {
     private double nxtCalibrationTimePerDegree;     // must be 'double' to avoid rounding error 
     private double nxtCalibrationTimePerMillimeter; // accumulations due to division then re-multiplication.
     private boolean nxtUsesCompassSensor;
+    private boolean nxtUsesHighPrecisionCompassRotation;
     
     /**
      * Constructor.
@@ -147,6 +148,14 @@ public class Robot {
 
     public void setNxtUsesCompassSensor(boolean nxtUsesCompassSensor) {
         this.nxtUsesCompassSensor = nxtUsesCompassSensor;
+    }
+
+    public boolean isNxtUsesHighPrecisionCompassRotation() {
+        return nxtUsesHighPrecisionCompassRotation;
+    }
+
+    public void setNxtUsesHighPrecisionCompassRotation(boolean nxtUsesHighPrecisionCompassRotation) {
+        this.nxtUsesHighPrecisionCompassRotation = nxtUsesHighPrecisionCompassRotation;
     }
 
 }

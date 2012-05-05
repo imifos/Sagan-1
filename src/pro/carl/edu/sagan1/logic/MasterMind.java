@@ -1,3 +1,23 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic;
 
 import java.awt.event.ActionEvent;
@@ -29,7 +49,6 @@ import pro.carl.edu.sagan1.logic.compiling.ProgramCompilerFactory;
  * logic. 
  * 
  * @since 0.0
- * @version 1.1.0 
  */
 public class MasterMind implements ActionListener {
         
@@ -169,6 +188,8 @@ public class MasterMind implements ActionListener {
         // Check if Win-AVG is installed
         // if (!WinAVRUtils.isInstalled())  -- see class
         //    log("You can use the simulator, but you will not be able to compile for the RP6 Robot model!");
+        
+        // Check if LEGO Mindstorm NXC is available
     }
     
     

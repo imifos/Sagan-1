@@ -1,3 +1,23 @@
+/*
+* Sagan-1 Robot Simulator
+* -----------------------
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* A copy of the GNU General Public License can be found here:
+* http://www.gnu.org/licenses/.
+*
+* Author:
+* Tasha CARL, 2011, http://lucubratory.eu / http://sagan-project.eu
+*/
 package pro.carl.edu.sagan1.logic.compiling;
 
 
@@ -82,9 +102,16 @@ public class NxtProgramCompiler extends ProgramCompiler {
      */
     @Override
     protected void doCalibrateCompilationEnvironment(Robot robot) throws CompilationExecutionException {
-        // Nothing to do here
+        
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"Model is LEGO NXT"));
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"CAL_TIME_PER_MM="+robot.getNxtCalibrationTimePerMillimeter()));
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"CAL_TIME_PER_DEGREE="+robot.getNxtCalibrationTimePerDegree()));
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"USE_COMPASS="+robot.isNxtUsesCompassSensor()));
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"USE_PRECISE_ROTATION="+robot.isNxtUsesHighPrecisionCompassRotation()));
+        fireEvent(new ActionEvent(this,ProgramCompiler.EVENTID_COMPILING_OUTPUT,"Robot: "+robot.getKey()+"/"+robot.getModelId()+"/"+robot.getName()));
     }
 
+    
     /**
      * Returns the cross-language instruction for the command when target is the 
      * LEGO NXT robot system.
@@ -104,6 +131,7 @@ public class NxtProgramCompiler extends ProgramCompiler {
         double msAhead=robot.getNxtCalibrationTimePerMillimeter();
         double msRotate=robot.getNxtCalibrationTimePerDegree();
         boolean usesCompass=robot.isNxtUsesCompassSensor();
+        boolean usesHPRot=robot.isNxtUsesHighPrecisionCompassRotation();
                 
         if (command.isMetaCommand()) 
             return "";
@@ -116,14 +144,10 @@ public class NxtProgramCompiler extends ProgramCompiler {
                 // Crutial to perfom calculations as floating point
             }
             else {
-                prog.append("if (stopIt!=1) { \n")
-                        .append("   current=SensorHTCompass(S2);\n")
-                        .append("   target=current+").append(degrees).append(";\n")
-                        .append("   if (target>360) target-=359;\n")
-                        .append("   OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);\n")
-                        .append("   while(current!=target && stopIt!=1) { ")
-                        .append("       current=SensorHTCompass(S2);  }\n")
-                        .append("   Off(OUT_BC); }");
+                // The rotation logic is actually implemented in the NXC template.
+                if (usesHPRot)
+                    prog.append("turnRightPrecise(").append(degrees).append(");");
+                else prog.append("turnRight(").append(degrees).append(");");
             }
         }
         else if (command.equals(Commands.TURNLEFT)) {
@@ -132,14 +156,9 @@ public class NxtProgramCompiler extends ProgramCompiler {
                      append("Wait(").append((int)(msRotate*((double)degrees))).append("); Off(OUT_BC); }");
             }
             else {
-                prog.append("if (stopIt!=1) { \n")
-                    .append("   current=SensorHTCompass(S2);\n")
-                    .append("   target=current-").append(degrees).append(";\n")
-                    .append("   if (target<=0) target+=359;\n")
-                    .append("   OnFwdSync(OUT_BC,").append(moveSpeed).append(",-100);\n")
-                    .append("   while(current!=target && stopIt!=1) {")
-                    .append("       current=SensorHTCompass(S2);  }\n")
-                    .append("   Off(OUT_BC); }");
+                if (usesHPRot)
+                    prog.append("turnLeftPrecise(").append(degrees).append(");");
+                else prog.append("turnLeft(").append(degrees).append(");");
             }
         }
         else if (command.equals(Commands.FORWARD)) {
