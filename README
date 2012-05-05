@@ -1,16 +1,16 @@
 Sagan-1 Robot Simulator
 
-http://sagan.be
+http://sagan-project.eu
 http://www.ict2act.be/greenlight2011/
-
-Pictures and Videos of kids using Sagan-1:
-http://sagan.be/impressions.html
 
 Versions:
 --------
 
+05.05.2012: V1.0.1
+Integration of Lego NXT compass sensor support.
+
 13.03.2012: V1.0.0 beta
-Integration of Lega NXT cross-compilation and upload. Rotation mode needs 
+Integration of Lego NXT cross-compilation and upload. Rotation mode needs 
 to be fine tuned.
 
 20.10.2011: V0.8.0
